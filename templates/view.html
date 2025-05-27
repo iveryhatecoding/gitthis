@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Table</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <a href="/" style="text-decoration: none;">
+        <button type="button">Go back</button>
+      </a>  
+    <h2>View Table</h2>
+    <form method="POST" action="/view_table" id="filterForm">
+        <label for="table">Select Table:</label>
+        <select name="table" id="table">
+            <option value="client_data">Client Data</option>
+            <option value="client_compliance">Client Compliance</option>
+            <option value="all">All (Combined)</option>
+        </select>
+    
+        <div id="sort-container">
+            <label>Sort By:</label>
+            <div class="sort-row">
+                <select name="sort_by[]">
+                    <option value="">-- None --</option>
+                    <option value="Name">Name</option>
+                    <option value="Client_id">Client ID</option>
+                    <option value="Age">Age</option>
+                    <option value="Risk_rating">Risk rating</option>
+                    <option value="Relationship_Manager">Relationship Manager</option>
+                    <option value="Service_type">Service type</option>
+                    <option value="Client_type">Client type</option>
+                    <option value="Pep">Pep</option>
+                    <option value="Nationality">Nationality</option>
+                </select>
+                <select name="sort_order[]">
+                    <option value="ASC">Ascending</option>
+                    <option value="DESC">Descending</option>
+                </select>
+            </div>
+        </div>
+        <button type="button" onclick="addSort()">Add Another Sort</button>
+    
+        <br><br>
+        <button type="submit">View</button>
+    </form>
+    
+    
+    {% if columns %}
+    <h3>Results from: {{ selected_table }}</h3>
+    <table>
+        <thead>
+            <tr>
+                {% for col in columns %}
+                    <th>{{ col }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                <tr>
+                    {% for cell in row %}
+                        <td>{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    <script>
+        function addSort() {
+            const container = document.getElementById("sort-container");
+            const newSort = document.createElement("div");
+            newSort.classList.add("sort-row");
+
+            newSort.innerHTML = `
+                <select name="sort_by[]">
+                    <option value="">-- None --</option>
+                    <option value="Name">Name</option>
+                    <option value="Client_id">Client ID</option>
+                    <option value="Age">Age</option>
+                    <option value="Risk_rating">Risk rating</option>
+                    <option value="Relationship_Manager">Relationship Manager</option>
+                    <option value="Service_type">Service type</option>
+                    <option value="Client_type">Client type</option>
+                    <option value="Pep">Pep</option>
+                    <option value="Nationality">Nationality</option>
+                </select>
+                <select name="sort_order[]">
+                    <option value="ASC">Ascending</option>
+                    <option value="DESC">Descending</option>
+                </select>
+            `;
+            container.appendChild(newSort);
+        }
+
+        </script>
+</body>
+</html>

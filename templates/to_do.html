@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do Tracker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .list {
+      flex: 1;
+      margin: 0 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      min-height: 300px;
+      background-color: #f9f9f9;
+    }
+    .list h3 {
+      text-align: center;
+    }
+    .task {
+      padding: 8px;
+      margin: 5px 0;
+      background-color: #fff;
+      border: 1px solid #aaa;
+      cursor: move;
+      position: relative;
+    }
+    .delete-btn {
+      position: absolute;
+      right: 8px;
+      top: 4px;
+      border: none;
+      background: none;
+      color: red;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <a href="/" style="text-decoration: none;">
+    <button type="button">Go back</button>
+  </a>
+  <h2>To-Do Task Manager</h2>
+
+  <!-- Insertion (can wire up with backend later) -->
+  <a href="/add_task" style="text-decoration: none;">
+    <button type="button">Add New Task</button>
+  </a>
+
+  <div class="container">
+    <div class="list" id="todo" ondragover="allowDrop(event)" ondrop="drop(event, 'todo')">
+      <h3>To Do</h3>
+    </div>
+    <div class="list" id="done" ondragover="allowDrop(event)" ondrop="drop(event, 'done')">
+      <h3>Done</h3>
+    </div>
+  </div>
+
+  <script>
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+  
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+  
+    function drop(ev, targetId) {
+      ev.preventDefault();
+      const data = ev.dataTransfer.getData("text");
+      const item = document.getElementById(data);
+      document.getElementById(targetId).appendChild(item);
+    }
+  
+    function deleteTask(btn) {
+      const task = btn.closest(".task");
+      if (task) task.remove();
+    }
+  
+    function renderTasks(tasks) {
+      tasks.forEach(task => {
+        const container = task.status === "done" ? "done" : "todo";
+        const taskEl = document.createElement("div");
+        const taskId = "task-" + task.id;
+  
+        taskEl.className = "task";
+        taskEl.id = taskId;
+        taskEl.draggable = true;
+        taskEl.ondragstart = drag;
+  
+        const span = document.createElement("span");
+        span.textContent = `${task.client_name} (RM: ${task.rm})`;
+  
+        const delBtn = document.createElement("button");
+        delBtn.className = "delete-btn";
+        delBtn.textContent = "×";
+        delBtn.onclick = function () { deleteTask(this); };
+  
+        taskEl.appendChild(span);
+        taskEl.appendChild(delBtn);
+  
+        document.getElementById(container).appendChild(taskEl);
+      });
+    }
+  
+    // Injected from Flask
+    //const tasks ={ tasks | tojson };
+  
+    // Render after DOM is ready
+    document.addEventListener("DOMContentLoaded", function () {
+      renderTasks();
+    });
+  </script>
+  
+</body>
+</html>

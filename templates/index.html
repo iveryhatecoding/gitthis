@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Lookup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+</head>
+<body>
+    <a href="/add" style="text-decoration: none;">
+        <button type="button">Add new data</button>
+    </a>    
+    <a href="/download_page" style="text-decoration: none;">
+        <button type="button">Download table</button>
+    </a>    
+    <a href="/update_page" style="text-decoration: none;">
+        <button type="button">Update table</button>
+    </a>
+    <a href="/view_page" style="text-decoration: none;">
+        <button type="button">View table</button>
+    </a>
+    <a href="/log_page" style="text-decoration: none;">
+        <button type="button">Logs</button>
+    </a>
+    <a href="/statistics_page" style="text-decoration: none;">
+        <button type="button">Statistics</button>
+    </a>
+    <h1>Client Lookup</h1>
+    <form id="lookupForm">
+        <label for="clientId">Enter Client ID:</label>
+        <input type="text" id="clientId" name="clientId" placeholder="e.g., 1001" />
+        <label>
+            <input type="checkbox" id="includeCompliance" /> Include Compliance Details
+        </label>
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="data-section" id="clientDetails" style="display: none;">
+        <h2>Client Information</h2>
+        <div class="field"><label>Client ID:</label> <span id="field-client-id"></span></div>
+        <div class="field"><label>Name:</label> <span id="field-name"></span></div>
+        <div class="field"><label>Nationality:</label> <span id="field-nationality"></span></div>
+        <div class="field"><label>Contact No:</label> <span id="field-contact"></span></div>
+        <div class="field"><label>Email:</label> <span id="field-email"></span></div>
+    </div>
+
+    <div class="data-section" id="complianceDetails" style="display: none;">
+        <h2>Compliance Information</h2>
+        <div class="field"><label>Onboarded Date:</label> <span id="field-onboarded"></span></div>
+        <div class="field"><label>Service Type:</label> <span id="field-service"></span></div>
+        <div class="field"><label>Client Type:</label> <span id="field-client-type"></span></div>
+        <div class="field"><label>PEP:</label> <span id="field-pep"></span></div>
+        <div class="field"><label>Risk Rating:</label> <span id="field-risk"></span></div>
+        <div class="field"><label>Last Periodic Assessment:</label> <span id="field-last-assessment"></span></div>
+        <div class="field"><label>Next Periodic Assessment:</label> <span id="field-next-assessment"></span></div>
+        <div class="field"><label>Relationship Manager:</label> <span id="field-rm"></span></div>
+    </div>
+    <button id="deleteClientBtn">
+        Delete Client
+    </button>
+    <!-- Link to the external JavaScript file -->
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Audit Log</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <a href="/" style="text-decoration: none;">
+        <button type="button">Go back</button>
+    </a>
+
+    <h1>Audit Log</h1>
+    {% if columns %}
+    <h3>Audit Log</h3>
+    <table>
+      <thead>
+        <tr>
+          {% for col in columns %}
+            <th>{{ col }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+          <tr>
+            {% for cell in row %}
+              <td>{{ cell }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No log data available.</p>
+  {% endif %}
+  
+</body>
+</html>

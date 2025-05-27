@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Download Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <a href="/" style="text-decoration: none;">
+        <button type="button">Go back</button>
+      </a>  
+    <h2>Download Table</h2>
+    <form id="downloadForm" method="POST" action="/download">
+        <label for="table">Select Table:</label>
+        <select name="table" id="table">
+            <option value="client_data">Client Data</option>
+            <option value="client_compliance">Client Compliance</option>
+            <option value="all">All (Combined & Deduplicated)</option>
+        </select>
+        <label for="sort_by">Sort By:</label>
+        <select name="sort_by" id="sort_by">
+            <option value="">-- None --</option>    
+            <option value="Client_id" selected>Client ID</option>
+            <option value="Name">Name</option>
+            <option value="Date_of_birth">Date of Birth</option>
+            <option value="Age">Age</option>
+        </select>
+
+        <label for="sort_order">Order:</label>
+        <select name="sort_order" id="sort_order">
+            <option value="ASC">Ascending</option>
+            <option value="DESC">Descending</option>
+        </select>
+        <br><br>
+        <label for="format">Select Format:</label>
+        <select name="format" id="format">
+            <option value="excel">Excel (.xlsx)</option>
+            <option value="pdf">PDF</option>
+        </select>
+        <br><br>
+        <button type="submit">Download</button>
+    </form>
+</body>
+</html>

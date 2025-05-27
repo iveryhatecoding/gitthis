@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Client</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <a href="/" style="text-decoration: none;">
+        <button type="button">Go back</button>
+      </a>  
+    <h1>Add New Client</h1>
+    <form id="updateClientForm">
+    <div class="mb-4">
+    <label for="client_id" class="block text-sm font-medium text-gray-700">Client ID</label>
+    <input type="text" id="client_id" name="client_id" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+    </div>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+        <br></br>
+
+        <label for="date_of_birth">Date of Birth:</label>
+        <input type="date" id="date_of_birth" name="date_of_birth" required />
+        <br></br>
+        <label for="contact_number">Contact Number:</label>
+        <input type="text" id="contact_number" name="contact_number" required />
+        <br></br>
+        <label for="email_address">Email Address:</label>
+        <input type="email" id="email_address" name="email_address" required />
+        <br></br>
+        <label for="nationality">Nationality:</label>
+    <select id="nationality" name="nationality" required>
+        <option value="Singaporean" selected>Singaporean</option>
+        <option value="Afghan">Afghan</option>
+        <option value="Albanian">Albanian</option>
+        <option value="Algerian">Algerian</option>
+        <option value="American">American</option>
+        <option value="Andorran">Andorran</option>
+        <option value="Angolan">Angolan</option>
+        <option value="Argentine">Argentine</option>
+        <option value="Armenian">Armenian</option>
+        <option value="Australian">Australian</option>
+        <option value="Austrian">Austrian</option>
+        <option value="Azerbaijani">Azerbaijani</option>
+        <option value="Bahamian">Bahamian</option>
+        <option value="Bahraini">Bahraini</option>
+        <option value="Bangladeshi">Bangladeshi</option>
+        <option value="Barbadian">Barbadian</option>
+        <option value="Belarusian">Belarusian</option>
+        <option value="Belgian">Belgian</option>
+        <option value="Belizean">Belizean</option>
+        <option value="Beninese">Beninese</option>
+        <option value="Bhutanese">Bhutanese</option>
+        <option value="Bolivian">Bolivian</option>
+        <option value="Bosnian">Bosnian</option>
+        <option value="Botswanan">Botswanan</option>
+        <option value="Brazilian">Brazilian</option>
+        <option value="British">British</option>
+        <option value="Bruneian">Bruneian</option>
+        <option value="Bulgarian">Bulgarian</option>
+        <option value="Burkinabe">Burkinabe</option>
+        <option value="Burmese">Burmese</option>
+        <option value="Burundian">Burundian</option>
+        <option value="Cambodian">Cambodian</option>
+        <option value="Cameroonian">Cameroonian</option>
+        <option value="Canadian">Canadian</option>
+        <option value="Cape Verdean">Cape Verdean</option>
+        <option value="Central African">Central African</option>
+        <option value="Chadian">Chadian</option>
+        <option value="Chilean">Chilean</option>
+        <option value="Chinese">Chinese</option>
+        <option value="Colombian">Colombian</option>
+        <option value="Comoran">Comoran</option>
+        <option value="Congolese">Congolese</option>
+        <option value="Costa Rican">Costa Rican</option>
+        <option value="Croatian">Croatian</option>
+        <option value="Cuban">Cuban</option>
+        <option value="Cypriot">Cypriot</option>
+        <option value="Czech">Czech</option>
+        <option value="Danish">Danish</option>
+        <option value="Djiboutian">Djiboutian</option>
+        <option value="Dominican">Dominican</option>
+        <option value="Dutch">Dutch</option>
+        <option value="East Timorese">East Timorese</option>
+        <option value="Ecuadorean">Ecuadorean</option>
+        <option value="Egyptian">Egyptian</option>
+        <option value="Emirati">Emirati</option>
+        <option value="Equatorial Guinean">Equatorial Guinean</option>
+        <option value="Eritrean">Eritrean</option>
+        <option value="Estonian">Estonian</option>
+        <option value="Ethiopian">Ethiopian</option>
+        <option value="Fijian">Fijian</option>
+        <option value="Finnish">Finnish</option>
+        <option value="French">French</option>
+        <option value="Gabonese">Gabonese</option>
+        <option value="Gambian">Gambian</option>
+        <option value="Georgian">Georgian</option>
+        <option value="German">German</option>
+        <option value="Ghanaian">Ghanaian</option>
+        <option value="Greek">Greek</option>
+        <option value="Grenadian">Grenadian</option>
+        <option value="Guatemalan">Guatemalan</option>
+        <option value="Guinean">Guinean</option>
+        <option value="Guyanese">Guyanese</option>
+        <option value="Haitian">Haitian</option>
+        <option value="Honduran">Honduran</option>
+        <option value="Hungarian">Hungarian</option>
+        <option value="Icelandic">Icelandic</option>
+        <option value="Indian">Indian</option>
+        <option value="Indonesian">Indonesian</option>
+        <option value="Iranian">Iranian</option>
+        <option value="Iraqi">Iraqi</option>
+        <option value="Irish">Irish</option>
+        <option value="Israeli">Israeli</option>
+        <option value="Italian">Italian</option>
+        <option value="Ivorian">Ivorian</option>
+        <option value="Jamaican">Jamaican</option>
+        <option value="Japanese">Japanese</option>
+        <option value="Jordanian">Jordanian</option>
+        <option value="Kazakh">Kazakh</option>
+        <option value="Kenyan">Kenyan</option>
+        <option value="Kuwaiti">Kuwaiti</option>
+        <option value="Kyrgyz">Kyrgyz</option>
+        <option value="Laotian">Laotian</option>
+        <option value="Latvian">Latvian</option>
+        <option value="Lebanese">Lebanese</option>
+        <option value="Liberian">Liberian</option>
+        <option value="Libyan">Libyan</option>
+        <option value="Liechtensteiner">Liechtensteiner</option>
+        <option value="Lithuanian">Lithuanian</option>
+        <option value="Luxembourger">Luxembourger</option>
+        <option value="Malagasy">Malagasy</option>
+        <option value="Malawian">Malawian</option>
+        <option value="Malaysian">Malaysian</option>
+        <option value="Maldivian">Maldivian</option>
+        <option value="Malian">Malian</option>
+        <option value="Maltese">Maltese</option>
+        <option value="Mauritanian">Mauritanian</option>
+        <option value="Mauritian">Mauritian</option>
+        <option value="Mexican">Mexican</option>
+        <option value="Moldovan">Moldovan</option>
+        <option value="Monacan">Monacan</option>
+        <option value="Mongolian">Mongolian</option>
+        <option value="Montenegrin">Montenegrin</option>
+        <option value="Moroccan">Moroccan</option>
+        <option value="Mozambican">Mozambican</option>
+        <option value="Namibian">Namibian</option>
+        <option value="Nepalese">Nepalese</option>
+        <option value="Netherlander">Netherlander</option>
+        <option value="New Zealander">New Zealander</option>
+        <option value="Nicaraguan">Nicaraguan</option>
+        <option value="Nigerian">Nigerian</option>
+        <option value="North Korean">North Korean</option>
+        <option value="Norwegian">Norwegian</option>
+        <option value="Omani">Omani</option>
+        <option value="Pakistani">Pakistani</option>
+        <option value="Palestinian">Palestinian</option>
+        <option value="Panamanian">Panamanian</option>
+        <option value="Papua New Guinean">Papua New Guinean</option>
+        <option value="Paraguayan">Paraguayan</option>
+        <option value="Peruvian">Peruvian</option>
+        <option value="Philippine">Philippine</option>
+        <option value="Polish">Polish</option>
+        <option value="Portuguese">Portuguese</option>
+        <option value="Qatari">Qatari</option>
+        <option value="Romanian">Romanian</option>
+        <option value="Russian">Russian</option>
+        <option value="Rwandan">Rwandan</option>
+        <option value="Salvadoran">Salvadoran</option>
+        <option value="Samoan">Samoan</option>
+        <option value="Saudi">Saudi</option>
+        <option value="Scottish">Scottish</option>
+        <option value="Senegalese">Senegalese</option>
+        <option value="Serbian">Serbian</option>
+        <option value="Seychellois">Seychellois</option>
+        <option value="Singaporean">Singaporean</option>
+        <option value="Slovak">Slovak</option>
+        <option value="Slovenian">Slovenian</option>
+        <option value="Somali">Somali</option>
+        <option value="South African">South African</option>
+        <option value="South Korean">South Korean</option>
+        <option value="Spanish">Spanish</option>
+        <option value="Sri Lankan">Sri Lankan</option>
+        <option value="Sudanese">Sudanese</option>
+        <option value="Surinamese">Surinamese</option>
+        <option value="Swazi">Swazi</option>
+        <option value="Swedish">Swedish</option>
+        <option value="Swiss">Swiss</option>
+        <option value="Syrian">Syrian</option>
+        <option value="Taiwanese">Taiwanese</option>
+        <option value="Tajik">Tajik</option>
+        <option value="Tanzanian">Tanzanian</option>
+        <option value="Thai">Thai</option>
+        <option value="Togolese">Togolese</option>
+        <option value="Tongan">Tongan</option>
+        <option value="Trinidadian">Trinidadian</option>
+        <option value="Tunisian">Tunisian</option>
+        <option value="Turkish">Turkish</option>
+        <option value="Turkmen">Turkmen</option>
+        <option value="Ugandan">Ugandan</option>
+        <option value="Ukrainian">Ukrainian</option>
+        <option value="Uruguayan">Uruguayan</option>
+        <option value="Uzbek">Uzbek</option>
+        <option value="Venezuelan">Venezuelan</option>
+        <option value="Vietnamese">Vietnamese</option>
+        <option value="Welsh">Welsh</option>
+        <option value="Yemeni">Yemeni</option>
+        <option value="Zambian">Zambian</option>
+        <option value="Zimbabwean">Zimbabwean</option>
+    </select>
+    <br></br>
+
+    <label for="residency_address">Residency Address:</label>
+    <input type="text" id="residency_address" name="residency_address" required />
+    <br></br>
+
+    <label for="employment_status">Employment Status:</label>
+    <input type="text" id="employment_status" name="employment_status" required />
+    <br></br>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required />
+    <br></br>
+
+    <label for="ic_number">IC Number:</label>
+    <input type="text" id="ic_number" name="ic_number" required />
+    <br></br>
+
+    <label for="client_profile">Client Profile:</label>
+    <input type="text" id="client_profile" name="client_profile" required />
+    <br></br>
+
+    
+    <!-- Toggle Button -->
+<button type="button" id="toggleComplianceBtn">Add Compliance Info</button>
+
+    <!-- Compliance Fields (Initially Hidden) -->
+    <div id="complianceSection" style="display: none; margin-top: 20px;">
+        <h3>Client Compliance Information</h3>
+
+        <label for="onboarded_date">Onboarded Date:</label>
+        <input type="date" name="onboarded_date"><br>
+
+        <label for="last_assessment">Last Periodic Risk Assessment:</label>
+        <input type="date" name="last_assessment"><br>
+
+        <label for="next_assessment">Next Periodic Risk Assessment:</label>
+        <input type="date" name="next_assessment"><br>
+
+        <label for="risk_rating">Risk Rating:</label>
+        <select name="risk_rating">
+            <option value="">-- Select --</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
+
+        <label for="relationship_manager">Relationship Manager:</label>
+        <input type="text" name="relationship_manager"><br>
+
+        <label for="service_type">Service Type:</label>
+        <select name="service_type">
+            <option value="">-- Select --</option>
+            <option value="Direct Fund">Direct Fund</option>
+            <option value="EAM">EAM</option>
+        </select>
+        <label for="client_type">Client Type:</label>
+        <input type="text" name="client_type"><br>
+
+        <label for="pep">PEP (Politically Exposed Person):</label>
+        <select name="pep">
+            <option value="">-- Select --</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br>
+    </div>
+    <button type="submit">Update Client</button>
+    </form>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- Initialize Select2 before your main app script -->
+    <script>
+    $(document).ready(function() {
+        $('#nationality').select2({
+        placeholder: "Select or search your nationality"
+        });
+    });
+    </script>
+
+    <!-- Your existing JavaScript file -->
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>

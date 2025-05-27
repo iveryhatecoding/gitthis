@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Statistics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <a href="/" style="text-decoration: none;"><button>Go back</button></a>
+  <h2>Client Statistics</h2>
+
+  <label for="category">Choose a category:</label>
+  <select id="category">
+    <option value="Nationality">Nationality</option>
+    <option value="Employment_status">Employment Status</option>
+    <option value="Pep">PEP</option>
+    <option value="Risk_rating">Risk Rating</option>
+    <option value="age_group">Age Group</option>
+  </select>
+
+  <canvas id="barChart" width="600" height="400"></canvas>
+
+  <script>
+    const ctx = document.getElementById("barChart").getContext("2d");
+    let barChart;
+
+    function loadChart(field) {
+      fetch(`/api/stats_by/${field}`)
+        .then(response => response.json())
+        .then(data => {
+          const labels = data.map(item => item.label || "Unknown");
+          const counts = data.map(item => item.count);
+
+          if (barChart) barChart.destroy();
+
+          barChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: `Number of Clients by ${field}`,
+                data: counts,
+                backgroundColor: 'rgba(54, 162, 235, 0.6)'
+              }]
+            }
+          });
+        });
+    }
+
+    document.getElementById("category").addEventListener("change", function() {
+      loadChart(this.value);
+    });
+
+    window.onload = () => loadChart("Nationality");
+  </script>
+</body>
+</html>
